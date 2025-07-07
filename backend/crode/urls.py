@@ -5,7 +5,11 @@ from django.conf.urls.static import static
 from dj_rest_auth.views import UserDetailsView
 from accounts.views import create_opportunity, opportunity_list, profile_view
 from django.http import JsonResponse
-from django.urls import path, include
+
+
+
+def home(request):
+    return JsonResponse({"message": "Welcome to the Crode API!"})
 
 urlpatterns = [
      path('', home),  
@@ -25,5 +29,3 @@ urlpatterns = [
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-def home(request):
-    return JsonResponse({"message": "Welcome to the Crode API!"})
