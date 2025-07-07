@@ -1,0 +1,7 @@
+Django>=3.2
+djangorestframework
+dj-rest-auth
+djoser
+django-cors-headers
+gunicorn
+django-allauth
