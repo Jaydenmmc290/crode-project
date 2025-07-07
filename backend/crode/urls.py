@@ -4,8 +4,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from dj_rest_auth.views import UserDetailsView
 from accounts.views import create_opportunity, opportunity_list, profile_view
+from django.http import JsonResponse
+from django.urls import path, include
 
 urlpatterns = [
+     path('', home),  
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('api/', include('accounts.urls')),
+
     path('admin/', admin.site.urls),
     path('auth/', include('dj_rest_auth.urls')),
     path('auth/user/', UserDetailsView.as_view()),
@@ -17,3 +24,6 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+def home(request):
+    return JsonResponse({"message": "Welcome to the Crode API!"})
